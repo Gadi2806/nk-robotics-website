@@ -36,14 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // LANGUAGE SYSTEM - EN / BM
   // =========================================
 
-  const languageToggle =
-    document.getElementById("languageToggle");
+ const languageToggle =
+  document.getElementById("languageToggle");
 
-  const currentLanguageText =
-    document.getElementById("currentLanguage");
-
-  const nextLanguageText =
-    document.getElementById("nextLanguage");
+const languageLabel =
+  document.getElementById("languageLabel");
 
 
   const translations = {
@@ -557,40 +554,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyLanguage(language) {
 
-    document.documentElement.lang =
-      language === "bm" ? "ms" : "en";
+  document.documentElement.lang =
+    language === "bm" ? "ms" : "en";
 
-    document.querySelectorAll("[data-i18n]")
-      .forEach((element) => {
+  document.querySelectorAll("[data-i18n]")
+    .forEach((element) => {
 
-        const key =
-          element.getAttribute("data-i18n");
+      const key =
+        element.getAttribute("data-i18n");
 
-        if (translations[language][key]) {
-          element.textContent =
-            translations[language][key];
-        }
-
-      });
-
-
-    if (currentLanguageText && nextLanguageText) {
-
-      if (language === "en") {
-        currentLanguageText.textContent = "EN";
-        nextLanguageText.textContent = "BM";
-      } else {
-        currentLanguageText.textContent = "BM";
-        nextLanguageText.textContent = "EN";
+      if (translations[language][key]) {
+        element.textContent =
+          translations[language][key];
       }
 
-    }
+    });
 
-    localStorage.setItem(
-      "nkLanguage",
-      language
-    );
+  if (languageLabel) {
+    languageLabel.textContent =
+      language === "en" ? "BM" : "EN";
   }
+
+  localStorage.setItem(
+    "nkLanguage",
+    language
+  );
+}
 
 
   let currentLanguage =
