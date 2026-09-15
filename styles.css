@@ -247,6 +247,106 @@ p {
   cursor: pointer;
 }
 
+/* ========================================
+   LANGUAGE SELECTOR
+======================================== */
+
+.language-selector {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.lang-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.language-selector.active .lang-chevron {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 170px;
+  padding: 6px;
+
+  background: #ffffff;
+  border: 1px solid rgba(17, 25, 24, 0.08);
+  border-radius: 12px;
+
+  box-shadow: 0 16px 35px rgba(17, 25, 24, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(-5px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+
+  z-index: 9999;
+}
+
+.language-selector.active .language-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.language-option {
+  width: 100%;
+  min-height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--charcoal-800);
+
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.language-option:hover {
+  background: var(--green-100);
+}
+
+.language-check {
+  opacity: 0;
+  color: var(--green-700);
+  font-weight: 700;
+}
+
+.language-option.active .language-check {
+  opacity: 1;
+}
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -1063,16 +1163,36 @@ p {
   */
 
   .nav-actions {
-    display: none;
-  }
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 0;
+}
 
-  /*
-    Hamburger button
-  */
+/* Hide Contact & Request Service sahaja */
+.nav-actions > .btn {
+  display: none;
+}
 
-  .menu-toggle {
-    display: flex;
-  }
+/* Language kekal keluar */
+.language-selector {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+}
+
+.menu-toggle {
+  display: flex;
+  margin-left: 4px;
+}
 
   /*
     Hero
